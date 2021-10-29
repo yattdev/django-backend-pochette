@@ -10,6 +10,7 @@ djangorestframework-simplejwt = "*"
 djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
+coverage = "*"
 
 [dev-packages]
 
