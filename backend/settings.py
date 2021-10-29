@@ -142,3 +142,15 @@ STATICFILES_DIRS = [
 # MEDIA SETTINGS
 MEDIA_URL = '/media/'
 MEDIA_ROOT = location('media/')
+
+# api configuration
+
+# Disable browsable api in production
+DEFAULT_RENDERER_CLASSES = (
+    'rest_framework.renderers.JSONRenderer',
+)
+
+if DEBUG:
+    DEFAULT_RENDERER_CLASSES = DEFAULT_RENDERER_CLASSES + (
+        'rest_framework.renderers.BrowsableAPIRenderer',
+    )
