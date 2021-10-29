@@ -176,3 +176,9 @@ DJOSER = {
     "LOGIN_FIELD": "email",
     "PASSWORD_RESET_CONFIRM_URL": "auth/password/reset/{uid}/{token}",
 }
+
+SIMPLE_JWT = {
+    'JWT_ALLOW_REFRESH': True,
+    'JWT_EXPIRATION_DELTA': timedelta(minutes=2),
+    'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
+}
