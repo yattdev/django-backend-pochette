@@ -166,3 +166,13 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_RENDERER_CLASSES': DEFAULT_RENDERER_CLASSES,
 }
+
+DJOSER = {
+    "SERIALIZERS": {
+        "user_create": "api.serializers.users.UserCreateSerializer",
+        "user": "api.serializers.users.UserSerializer",
+        "current_user": "api.serializers.users.UserSerializer",
+    },
+    "LOGIN_FIELD": "email",
+    "PASSWORD_RESET_CONFIRM_URL": "auth/password/reset/{uid}/{token}",
+}
