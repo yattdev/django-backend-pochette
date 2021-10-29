@@ -138,3 +138,7 @@ STATICFILES_DIRS = [
     location("css/"),
     location("img/"),
 ]
+
+# MEDIA SETTINGS
+MEDIA_URL = '/media/'
+MEDIA_ROOT = location('media/')
