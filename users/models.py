@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager
 
-# Create your models here.
 
+USER_ROLES = [('Admin', 'Admin'), ('Staff', 'Staff')]
 
 class UserAccountManager(UserManager):
     """ DOCSTRING:
@@ -24,12 +24,12 @@ class UserAccountManager(UserManager):
                                         **extra_fields)
 
 
-
 class UserAccount(AbstractUser):
     """ DOCSTRING:
         define a custom user models
     """
     email = models.EmailField(unique=True)
+    role = models.CharField(max_length=40, choices=USER_ROLES, default='Staff')
     
     USERNAME_FIELD = 'email'
 
