@@ -1,3 +1,4 @@
+!.gitignore
 *migrations/
 */__pycache__/
 .coverage
