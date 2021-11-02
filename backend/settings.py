@@ -65,7 +65,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'corsheaders.middleware.CorsMiddleware', # 3rd
+    'corsheaders.middleware.CorsMiddleware',  # 3rd
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -93,7 +93,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'backend.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
@@ -104,25 +103,27 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/2.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.CommonPasswordValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        'NAME':
+        'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/
@@ -136,7 +137,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
@@ -154,23 +154,64 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = location('media/')
 
+# Static files css for production
+
+if os.environ.get('ENV') == 'PRODUCTION':
+    """ Sometimes Django apps are deployed at a particular prefix
+    (or “subdirectory”) on a domain e.g. http://example.com/my-app/ rather than
+    just http://example.com. In this case you would normally use Django’s
+    FORCE_SCRIPT_NAME setting to tell the application where it is located
+    """
+    # FORCE_SCRIPT_NAME = '/blog'
+    # Static files (CSS, JavaScript, Images)
+    STATIC_URL = '/static/'
+    STATIC_ROOT = location('staticfiles')
+
+    STATICFILES_DIRS = (location('static'), )
+
+    # """ DROPBOX CONFIGURATION """
+    # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+
+    # DROPBOX_OAUTH2_TOKEN = "QH8Mis-t1EAAAAAAAAAAEFd2xvWbp5-DkSc-7W5xzz-V9Me_EnzRMUXALHxeq-Oc"
+    DROPBOX_OAUTH2_TOKEN = "QH8Mis-t1EAAAAAAAAAADfVvZ6NFX_7vNRJP2OX3HNmM1YlrRqXS9dbf_yyJiD-p"
+
+    DROPBOX_ROOT_PATH = '/albums_pochette/'
+
+    DROPBOX_OAUTH2_KEY = "uh51yq1xd4bj34t"
+
+    DROPBOX_OAUTH2_SECRET = "d8qqrd3j3eypd5a"
+
+    # DROPBOX_OAUTH2_KEY = "x6wtdz1yz5xe05j"
+
+    # DROPBOX_OAUTH2_SECRET = "9nczp780kbzbgah"
+
+    MEDIA_URL = '/albums_pochette/media/'
+    MEDIA_ROOT = 'albums_pochette/media/'
+
+    ADMIN_MEDIA_PREFIX = 'albums_pochette/media/'
+    # "************ END DROPBOX CONFIGURATION ************"
+
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+    # whitenoise.storage.CompressedManifestStaticFilesStorage
+    import dj_database_url
+
+    db_from_env = dj_database_url.config(conn_max_age=500)
+    DATABASES['default'].update(db_from_env)
+
 # api configuration
 
 # Disable browsable api in production
-DEFAULT_RENDERER_CLASSES = (
-    'rest_framework.renderers.JSONRenderer',
-)
+DEFAULT_RENDERER_CLASSES = ('rest_framework.renderers.JSONRenderer', )
 
 if DEBUG:
     DEFAULT_RENDERER_CLASSES = DEFAULT_RENDERER_CLASSES + (
-        'rest_framework.renderers.BrowsableAPIRenderer',
-    )
+        'rest_framework.renderers.BrowsableAPIRenderer', )
 
 # REST framwork configuration
 REST_FRAMEWORK = {
-   'DEFAULT_FILTER_BACKENDS': [
-        'django_filters.rest_framework.DjangoFilterBackend'
-    ],
+    'DEFAULT_FILTER_BACKENDS':
+    ['django_filters.rest_framework.DjangoFilterBackend'],
     "DEFAULT_AUTHENTICATION_CLASSES": (
         #  'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -179,14 +220,19 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
-    'DEFAULT_RENDERER_CLASSES': DEFAULT_RENDERER_CLASSES,
+    'DEFAULT_RENDERER_CLASSES':
+    DEFAULT_RENDERER_CLASSES,
 }
 
 SIMPLE_JWT = {
     'JWT_ALLOW_REFRESH': True,
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
-    'AUTH_HEADER_TYPES': ('Bearer', 'Token', 'JWT',),
+    'AUTH_HEADER_TYPES': (
+        'Bearer',
+        'Token',
+        'JWT',
+    ),
     'AUTH_HEADER_NAME': 'HTTP_AUTHORIZATION',
 }
 
@@ -202,7 +248,8 @@ DJOSER = {
 
 # CORS HEADERS Configuration
 CORS_ALLOWED_ORIGINS = [
-    "https://herokuapp.pochette.com",
+    "http://www.album-pochette.herokuapp.com",
+    "http://album-pochette.herokuapp.com",
     "http://localhost:8080",
     "http://127.0.0.1:8080",
     "http://192.168.11.106:8080",
