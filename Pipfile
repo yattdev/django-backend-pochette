@@ -19,6 +19,7 @@ pillow = "*"
 django-cors-headers = "*"
 djangorestframework-simplejwt = "*"
 django-resized = "*"
+django-storages = {extras = ["dropbox"], version = "*"}
 
 [dev-packages]
 
