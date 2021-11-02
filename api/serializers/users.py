@@ -43,6 +43,5 @@ class UserSerializer(UserSerializer):
         fields = (
             'id',
             'email',
-            'role',
         )
 
