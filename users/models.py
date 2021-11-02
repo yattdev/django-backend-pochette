@@ -40,3 +40,5 @@ class UserAccount(AbstractUser):
     class Meta:
         ordering = ['-date_joined']
         
+    def __str__(self):
+        return self.email.split('@')[0]
