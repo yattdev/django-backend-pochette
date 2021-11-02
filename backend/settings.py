@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # 3rd-party librairie
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
@@ -54,10 +55,12 @@ INSTALLED_APPS = [
 ]
 
 AUTH_USER_MODEL = 'users.UserAccount'
+DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware', # 3rd
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -192,8 +195,23 @@ DJOSER = {
     "PASSWORD_RESET_CONFIRM_URL": "auth/password/reset/{uid}/{token}",
 }
 
-SIMPLE_JWT = {
-    'JWT_ALLOW_REFRESH': True,
-    'JWT_EXPIRATION_DELTA': timedelta(minutes=2),
-    'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=7),
-}
+# CORS HEADERS Configuration
+CORS_ALLOWED_ORIGINS = [
+    "https://herokuapp.pochette.com",
+    "http://localhost:8080",
+    "http://127.0.0.1:8080",
+    "http://192.168.11.106:8080",
+]
+
+# allows http verbs
+from corsheaders.defaults import default_methods
+
+CORS_ALLOW_METHODS = list(default_methods) + [
+    #  "POKE",
+]
+
+from corsheaders.defaults import default_headers
+
+CORS_ALLOW_HEADERS = list(default_headers) + [
+    #  "my-custom-header",
+]
