@@ -1,10 +1,12 @@
 from io import BytesIO
-from django.test import TestCase
-from gestion_prochette.models import Pochette
+
 from django.contrib.auth import get_user_model
 from django.contrib.auth.hashers import make_password
 from django.core.files import File
+from django.test import TestCase
 from PIL import Image
+
+from gestion_prochette.models import Pochette
 
 
 class PochetteTestCase(TestCase):
