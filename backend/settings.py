@@ -103,8 +103,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'album_pochette',
-        'USER': 'alassane',
-        'PASSWORD': '7678_gone',
+        'USER': os.environ.get('DATABASES_USER', 'alassane'),
+        'PASSWORD': os.environ.get('DATABASES_PASSWORD', '7678_gone'),
         'HOST': '',
         'PORT': 5432
     }
