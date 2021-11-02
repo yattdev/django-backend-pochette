@@ -15,7 +15,6 @@ class UserAccountTestCase(TestCase):
     """ TestCase for UserAccount models"""
     @classmethod
     def setUpTestData(cls):
-
         # Create test user
         cls.user_test = User.objects.create(
             email='user_test@gmail.com',
@@ -43,7 +42,7 @@ class UserAccountTestCase(TestCase):
         self.user_test_authtoken = response.json()['access']
 
     def test_create_user(self):
-        user = User.objects.get(id=1)
+        user = User.objects.get(email="user_test@gmail.com")
         self.assertEqual(f'{user.email}', f'{self.user_test.email}')
         self.assertTrue(user.check_password('test_user123'))
         self.assertTrue(user.is_active)
