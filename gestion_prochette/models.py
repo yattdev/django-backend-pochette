@@ -21,6 +21,12 @@ class Pochette(Model):
         crop=['top', 'left'],
         upload_to='albums_photo/'
     )
+    image_for_detail_page = ResizedImageField(
+        size=[550, 350],
+        editable=False,
+        upload_to='albums_photo_details/',
+        blank=True,
+    )
     pub_date = DateField(auto_now_add=True)
     author = ForeignKey(get_user_model(),
                                on_delete=CASCADE,
@@ -31,3 +37,8 @@ class Pochette(Model):
                          blank=True,
                          )
     is_public = BooleanField(verbose_name='public', default=False)
+
+    def save(self, *args, **kwargs):
+        if self.image:
+            self.image_for_detail_page = self.image
+        super().save(*args, **kwargs)
