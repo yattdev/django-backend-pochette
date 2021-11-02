@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.urls import reverse
+from django.views.generic import RedirectView
+from django.urls import reverse_lazy
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-
-    # third party apps urls
+    path('', RedirectView.as_view(url=reverse_lazy('pochette-list'))),
     path('api/v1/', include('api.urls')),
 ]
 
