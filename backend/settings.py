@@ -193,7 +193,8 @@ if os.environ.get('ENV') == 'PRODUCTION':
     ADMIN_MEDIA_PREFIX = 'albums_pochette/media/'
     # "************ END DROPBOX CONFIGURATION ************"
 
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+    #  STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
     # whitenoise.storage.CompressedManifestStaticFilesStorage
     import dj_database_url
 
