@@ -44,11 +44,13 @@ INSTALLED_APPS = [
 
     # 3rd-party librairie
     'rest_framework',
+    'rest_framework.authtoken',
     'djoser',
 
     # local
-    'api',
-    'users',
+    'api', # endpoint app
+    'users', # app to manage users
+    'gestion_prochette', # app to manage music album covers
 ]
 
 AUTH_USER_MODEL = 'users.UserAccount'
@@ -158,12 +160,16 @@ if DEBUG:
 
 # REST framwork configuration
 REST_FRAMEWORK = {
+   'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ],
     "DEFAULT_AUTHENTICATION_CLASSES": (
+        #  'rest_framework.authentication.TokenAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
         "rest_framework.authentication.SessionAuthentication",
     ),
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     ],
     'DEFAULT_RENDERER_CLASSES': DEFAULT_RENDERER_CLASSES,
 }
