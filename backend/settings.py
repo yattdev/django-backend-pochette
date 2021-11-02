@@ -25,6 +25,7 @@ location = lambda x: os.path.join(os.path.dirname(os.path.realpath(__file__)),
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'xd)0tsnm!n^77eu)f!hb5%ckqj8n-uwvs6(eoltj(!ccgg%m_y'
+#  \r+([xuhJM\\$S]78]h|#8EeOD'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
