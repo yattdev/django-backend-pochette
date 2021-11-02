@@ -20,11 +20,31 @@ from django.conf.urls.static import static
 from django.urls import reverse
 from django.views.generic import RedirectView
 from django.urls import reverse_lazy
+from drf_yasg.views import get_schema_view
+from rest_framework import permissions
+from drf_yasg import openapi
+
+schemas_view = get_schema_view(
+    openapi.Info(
+        title="Gestion de pochette d'albums API",
+        description="A simple API for crud albums pochette",
+        default_version="v1",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="yattdeveloper@gmail"),
+        license=openapi.License(name="BSD License"),
+    ),
+    public=True,
+    permission_classes=(permissions.AllowAny,),
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', RedirectView.as_view(url=reverse_lazy('pochette-list'))),
     path('api/v1/', include('api.urls')),
+
+    path('api/v1/docs', schemas_view.with_ui(
+        'swagger', cache_timeout=0
+    ), name="openapi-schemas")
 ]
 
 # enables django to know location of static and media files
