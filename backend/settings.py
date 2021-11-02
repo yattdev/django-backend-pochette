@@ -221,6 +221,11 @@ REST_FRAMEWORK = {
     DEFAULT_RENDERER_CLASSES,
 }
 
+# Configuration for dj_rest_auth
+REST_USE_JWT = True
+JWT_AUTH_COOKIE = 'jwt-auth'
+
+# SIMPLE_JWT configuration
 SIMPLE_JWT = {
     'JWT_ALLOW_REFRESH': True,
     'ACCESS_TOKEN_LIFETIME': timedelta(hours=2),

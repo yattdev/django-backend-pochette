@@ -41,6 +41,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', RedirectView.as_view(url=reverse_lazy('pochette-list'))),
     path('api/v1/', include('api.urls')),
+    # swagger logout url
+    path('accounts/logout/', RedirectView.as_view(url=reverse_lazy('logout'))),
+    path('accounts/login/', RedirectView.as_view(url=reverse_lazy('login'))),
 
     path('api/v1/docs', schemas_view.with_ui(
         'swagger', cache_timeout=0

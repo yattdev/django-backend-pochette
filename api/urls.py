@@ -9,7 +9,9 @@ urlpatterns = [
     path('pochettes/<int:pk>/<slug:slug>', PochetteDetails.as_view(), name='pochette-details'),
     path('get-token/', get_csrf_token, name="get-token"), # to get csrf_token 
     # third party apps urls
+
+    path("auth", include("rest_framework.urls")),
     path('auth', include('djoser.urls'), name="auth"),
     path('auth', include('djoser.urls.jwt')),
-    #  path('auth', include('djoser.urls.authtoken'), name="auth_token"),
+    path('auth', include('djoser.urls.authtoken'), name="auth_token"),
 ]
