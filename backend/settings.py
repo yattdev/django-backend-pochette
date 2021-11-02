@@ -175,13 +175,13 @@ if os.environ.get('ENV') == 'PRODUCTION':
     DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 
     # DROPBOX_OAUTH2_TOKEN = "QH8Mis-t1EAAAAAAAAAAEFd2xvWbp5-DkSc-7W5xzz-V9Me_EnzRMUXALHxeq-Oc"
-    DROPBOX_OAUTH2_TOKEN = "QH8Mis-t1EAAAAAAAAAADfVvZ6NFX_7vNRJP2OX3HNmM1YlrRqXS9dbf_yyJiD-p"
+    DROPBOX_OAUTH2_TOKEN = "sl.A7jhOrw_LvhFTWG7GdSbW5ziXb5OQ2GfBS4AWSfmUeWTGSjphUiPO5jdKx2SCYJlTl-RnciturGN6czAMy2n9NpnKFha6hebM46afN1AUtSCvemP-eqyjc5NNjziNDJUdwtOidM"
 
     DROPBOX_ROOT_PATH = '/albums_pochette/'
 
-    DROPBOX_OAUTH2_KEY = "uh51yq1xd4bj34t"
+    DROPBOX_OAUTH2_KEY = "gtz0nkrvx7ln1n3"
 
-    DROPBOX_OAUTH2_SECRET = "d8qqrd3j3eypd5a"
+    DROPBOX_OAUTH2_SECRET = "ruoq6ejzp2ii4c3"
 
     # DROPBOX_OAUTH2_KEY = "x6wtdz1yz5xe05j"
 
