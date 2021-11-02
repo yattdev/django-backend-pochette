@@ -146,9 +146,9 @@ STATIC_URL = '/static/'
 STATIC_ROOT = location('static')
 
 STATICFILES_DIRS = [
-    location("js/"),
-    location("css/"),
-    location("img/"),
+    location("static/js/"),
+    location("static/css/"),
+    location("static/img/"),
 ]
 
 # MEDIA SETTINGS
