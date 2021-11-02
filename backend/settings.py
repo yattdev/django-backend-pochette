@@ -54,9 +54,9 @@ INSTALLED_APPS = [
     'drf_yasg',
 
     # local
-    'api', # endpoint app
-    'users', # app to manage users
-    'gestion_prochette', # app to manage music album covers
+    'api',  # endpoint app
+    'users',  # app to manage users
+    'gestion_prochette',  # app to manage music album covers
 ]
 
 AUTH_USER_MODEL = 'users.UserAccount'
