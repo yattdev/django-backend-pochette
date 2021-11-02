@@ -6,11 +6,16 @@ name = "pypi"
 [packages]
 django = "*"
 djoser = "*"
-djangorestframework-simplejwt = "*"
 djangorestframework = "*"
 markdown = "*"
 django-filter = "*"
 coverage = "*"
+django-coverage = "*"
+django-autoslug = "*"
+pillow = "*"
+django-cors-headers = "*"
+djangorestframework-simplejwt = "*"
+django-resized = "*"
 
 [dev-packages]
 
