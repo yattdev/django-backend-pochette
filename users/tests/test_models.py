@@ -6,8 +6,10 @@ from rest_framework.authtoken.models import Token
 from django.urls import reverse_lazy
 from rest_framework import status
 from django.test import Client
+from rest_framework_simplejwt.tokens import AccessToken
 
-User = get_user_model() # Get user models
+User = get_user_model()  # Get user models
+
 
 class UserAccountTestCase(TestCase):
     """ TestCase for UserAccount models"""
@@ -21,11 +23,11 @@ class UserAccountTestCase(TestCase):
         )
         cls.user_test.save()
 
-        cls.user_test_authtoken = '' # Update when login user_test
+        cls.user_test_authtoken = ''  # Update when login user_test
 
         # Create super user
-        cls.test_admin = User.objects.create_superuser(email='admin@gmail.com',
-                                                      password='test_admin123')
+        cls.test_admin = User.objects.create_superuser(
+            email='admin@gmail.com', password='test_admin123')
         cls.test_admin.save()
 
     @classmethod
@@ -34,12 +36,11 @@ class UserAccountTestCase(TestCase):
         cls.client = APIClient()
 
     def login(self):
-        response = self.client.post(reverse_lazy('login'),
-                                      {
-                                          'email': 'user_test@gmail.com',
-                                          'password': 'test_user123', 
-                                       })
-        self.user_test_authtoken = response.json()['auth_token']
+        response = self.client.post(reverse_lazy('jwt-create'), {
+            'email': 'user_test@gmail.com',
+            'password': 'test_user123',
+        })
+        self.user_test_authtoken = response.json()['access']
 
     def test_create_user(self):
         user = User.objects.get(id=1)
@@ -57,60 +58,36 @@ class UserAccountTestCase(TestCase):
         self.assertTrue(superUser.is_staff)
 
     def test_signup_user(self):
-        response = self.client.post(reverse_lazy('useraccount-list'),
-                                   {
-                                    'email': 'yatt@gmail.com',
-                                    'password':'testpassword_123', 
-                                   })
+        response = self.client.post(reverse_lazy('useraccount-list'), {
+            'email': 'yatt@gmail.com',
+            'password': 'testpassword_123',
+        })
 
         # Check status response
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(User.objects.count(), 3)
-        self.client.get(reverse_lazy('logout'))
+        #  self.client.get(reverse_lazy('logout'))
 
     def test_login_user(self):
         # Test to login user
-        response = self.client.post(reverse_lazy('login'),
-                                   {
-                                    'email': 'user_test@gmail.com',
-                                    'password': 'test_user123', 
-                                   })
+        response = self.client.post(reverse_lazy('jwt-create'), {
+            'email': 'user_test@gmail.com',
+            'password': 'test_user123',
+        })
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        # Check token
-        self.user_test_authtoken = response.json()['auth_token']
-        token = Token.objects.get(user=self.user_test) 
-        self.assertEqual(f'{token}', f'{self.user_test_authtoken}')
-        self.client.logout()
 
-    def test_authtoken_user(self): 
-        self.login() # login user
+    def test_authtoken_user(self):
+        self.login()  # login user
         # Test to get user details without creadentials
         response = self.client.get(reverse_lazy('useraccount-me'))
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
 
         # Test to get user details with creadentials
-        self.client = Client(HTTP_AUTHORIZATION='Token ' + f'{self.user_test_authtoken}')
+        self.client = Client(HTTP_AUTHORIZATION='Token ' +
+                             f'{self.user_test_authtoken}')
         response = self.client.get(reverse_lazy('useraccount-me'))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         # Test user details
         data = response.json()
         self.assertEqual(f'{self.user_test.email}', data['email'])
-        
-    def test_logout_user(self):
-        self.login() # login user
-        # Test logout without creadentials
-        # New client without creadentials
-        response = self.client.post(reverse_lazy('logout'))
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
-
-        # Test logout with creadentials
-        self.client = Client(HTTP_AUTHORIZATION='Token ' + f'{self.user_test_authtoken}')
-        response = self.client.post(reverse_lazy('logout'))
-        self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
-
-        # Test to access user details after to logout
-        response = self.client.get(reverse_lazy('useraccount-me'))
-        self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
-
-
