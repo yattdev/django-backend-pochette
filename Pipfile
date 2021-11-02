@@ -23,6 +23,7 @@ django-storages = {extras = ["dropbox"], version = "*"}
 whitenoise = "*"
 dj-database-url = "*"
 gunicorn = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
