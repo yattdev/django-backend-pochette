@@ -216,3 +216,10 @@ from corsheaders.defaults import default_headers
 CORS_ALLOW_HEADERS = list(default_headers) + [
     #  "my-custom-header",
 ]
+
+# Configuration for django resize
+DJANGORESIZED_DEFAULT_SIZE = [400, 240]
+DJANGORESIZED_DEFAULT_QUALITY = 75
+DJANGORESIZED_DEFAULT_KEEP_META = True
+DJANGORESIZED_DEFAULT_FORMAT_EXTENSIONS = {'JPEG': ".jpg", 'PNG': ".png"}
+DJANGORESIZED_DEFAULT_NORMALIZE_ROTATION = True
