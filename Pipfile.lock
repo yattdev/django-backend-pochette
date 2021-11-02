@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c0efe88c3ace79ff1723c870bb959257383e818c504cb3e5c08a015cf9a31e53"
+            "sha256": "9518c9e4b83f7cb724ae6111c3d98dc023a331de613a6a55632c51b0ceed0777"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -236,13 +236,6 @@
             "index": "pypi",
             "version": "==1.2.4"
         },
-        "django-dropbox-storage": {
-            "hashes": [
-                "sha256:950e6b25aad09df982dc0962bf61f6e55f0860477da9e5f4d3bc0f8ec79050ce"
-            ],
-            "index": "pypi",
-            "version": "==0.4.1"
-        },
         "django-filter": {
             "hashes": [
                 "sha256:632a251fa8f1aadb4b8cceff932bb52fe2f826dd7dfe7f3eac40e5c463d6836e",
@@ -339,6 +332,14 @@
             ],
             "markers": "python_version >= '3.5'",
             "version": "==0.5.1"
+        },
+        "install": {
+            "hashes": [
+                "sha256:1455304a2475b6753a9b0c28243ca7d8b7d71aeea1a88e6de94034fc57d765a0",
+                "sha256:dfec614e0cc90f00659067a078bc2ec032d9f0758f3df230c073eeaffd0cefa1"
+            ],
+            "index": "pypi",
+            "version": "==1.3.4"
         },
         "itypes": {
             "hashes": [

@@ -54,7 +54,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'drf_yasg',
-    'django_dropbox_storage',
+    'storages',
 
     # local
     'api',  # endpoint app
@@ -176,26 +176,16 @@ if os.environ.get('ENV') == 'PRODUCTION':
     STATIC_ROOT = location('staticfiles')
 
     STATICFILES_DIRS = (location('static'), )
-
     # """ DROPBOX CONFIGURATION """
     # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    DEFAULT_FILE_STORAGE = 'django_dropbox_storage.storage.DropboxStorage'
-    DROPBOX_ACCESS_TOKEN = "p2S7HyXxy6IAAAAAAAAAAZ1mpT0eCwYDzDXZ1aaC7553Yq38ADIraVlussmVt0qL"
+    DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 
-    DROPBOX_ROOT_FOLDER = '/Applications/albums_pochette/media'
+    DROPBOX_OAUTH2_TOKEN = os.environ.get('DROPBOX_OAUTH2_TOKEN')
 
-    DROPBOX_OAUTH2_KEY = "gtz0nkrvx7ln1n3"
+    MEDIA_URL = '/media/'
+    MEDIA_ROOT = '/media'
 
-    DROPBOX_OAUTH2_SECRET = "ruoq6ejzp2ii4c3"
-
-    # DROPBOX_OAUTH2_KEY = "x6wtdz1yz5xe05j"
-
-    # DROPBOX_OAUTH2_SECRET = "9nczp780kbzbgah"
-
-    MEDIA_URL = '/albums_pochette/media/'
-    MEDIA_ROOT = 'albums_pochette/media/'
-
-    ADMIN_MEDIA_PREFIX = 'albums_pochette/media/'
+    ADMIN_MEDIA_PREFIX = 'media'
     # "************ END DROPBOX CONFIGURATION ************"
 
     #  STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
