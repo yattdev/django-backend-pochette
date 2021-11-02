@@ -29,12 +29,12 @@ SECRET_KEY = 'xd)0tsnm!n^77eu)f!hb5%ckqj8n-uwvs6(eoltj(!ccgg%m_y'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-ALLOWED_HOSTS = ['*']
 if os.environ.get('ENV') == 'PRODUCTION':
     DEBUG = False
 else:
     DEBUG = True
 
+ALLOWED_HOSTS = ['album-pochette.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Application definition
 
