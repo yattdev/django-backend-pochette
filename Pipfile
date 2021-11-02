@@ -20,6 +20,7 @@ django-cors-headers = "*"
 djangorestframework-simplejwt = "*"
 django-resized = "*"
 django-storages = {extras = ["dropbox"], version = "*"}
+whitenoise = "*"
 
 [dev-packages]
 
