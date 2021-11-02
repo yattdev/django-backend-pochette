@@ -22,6 +22,7 @@ django-resized = "*"
 django-storages = {extras = ["dropbox"], version = "*"}
 whitenoise = "*"
 dj-database-url = "*"
+gunicorn = "*"
 
 [dev-packages]
 
