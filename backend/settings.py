@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'drf_yasg',
+    'django_dropbox_storage',
 
     # local
     'api',  # endpoint app
@@ -178,12 +179,10 @@ if os.environ.get('ENV') == 'PRODUCTION':
 
     # """ DROPBOX CONFIGURATION """
     # DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+    DEFAULT_FILE_STORAGE = 'django_dropbox_storage.storage.DropboxStorage'
+    DROPBOX_ACCESS_TOKEN = "p2S7HyXxy6IAAAAAAAAAAZ1mpT0eCwYDzDXZ1aaC7553Yq38ADIraVlussmVt0qL"
 
-    # DROPBOX_OAUTH2_TOKEN = "QH8Mis-t1EAAAAAAAAAAEFd2xvWbp5-DkSc-7W5xzz-V9Me_EnzRMUXALHxeq-Oc"
-    DROPBOX_OAUTH2_TOKEN = "sl.A7jhOrw_LvhFTWG7GdSbW5ziXb5OQ2GfBS4AWSfmUeWTGSjphUiPO5jdKx2SCYJlTl-RnciturGN6czAMy2n9NpnKFha6hebM46afN1AUtSCvemP-eqyjc5NNjziNDJUdwtOidM"
-
-    DROPBOX_ROOT_PATH = '/albums_pochette/'
+    DROPBOX_ROOT_FOLDER = '/Applications/albums_pochette/media'
 
     DROPBOX_OAUTH2_KEY = "gtz0nkrvx7ln1n3"
 

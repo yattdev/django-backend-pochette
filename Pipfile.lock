@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "6ab1ca8978993d4459c7eaf6accc56e0319f5f4fb1e85db4ce3fe3759b10f6b8"
+            "sha256": "c0efe88c3ace79ff1723c870bb959257383e818c504cb3e5c08a015cf9a31e53"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -235,6 +235,13 @@
             ],
             "index": "pypi",
             "version": "==1.2.4"
+        },
+        "django-dropbox-storage": {
+            "hashes": [
+                "sha256:950e6b25aad09df982dc0962bf61f6e55f0860477da9e5f4d3bc0f8ec79050ce"
+            ],
+            "index": "pypi",
+            "version": "==0.4.1"
         },
         "django-filter": {
             "hashes": [
