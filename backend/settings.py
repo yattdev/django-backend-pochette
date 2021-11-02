@@ -35,6 +35,7 @@ if os.environ.get('ENV') == 'PRODUCTION':
 else:
     DEBUG = True
 
+# ALLOWED_HOSTS
 ALLOWED_HOSTS = ['album-pochette.herokuapp.com', 'localhost', '127.0.0.1']
 
 # Application definition
