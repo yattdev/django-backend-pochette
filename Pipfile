@@ -21,6 +21,7 @@ djangorestframework-simplejwt = "*"
 django-resized = "*"
 django-storages = {extras = ["dropbox"], version = "*"}
 whitenoise = "*"
+dj-database-url = "*"
 
 [dev-packages]
 
