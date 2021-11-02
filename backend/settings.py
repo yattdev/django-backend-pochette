@@ -60,7 +60,7 @@ INSTALLED_APPS = [
 ]
 
 AUTH_USER_MODEL = 'users.UserAccount'
-DEFAULT_AUTO_FIELD='django.db.models.AutoField'
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
