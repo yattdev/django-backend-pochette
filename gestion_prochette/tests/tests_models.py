@@ -38,7 +38,7 @@ class PochetteTestCase(TestCase):
         cls.pochette_test.save()
 
     def test_pochette_content(self):
-        pochette = Pochette.objects.get(id=1)
+        pochette = Pochette.objects.get(author=self.author_test)
 
         self.assertEqual(f'{pochette.title}', f'{self.pochette_test.title}')
         self.assertEqual(f'{pochette.slug}', f'{self.pochette_test.slug}')
