@@ -43,6 +43,7 @@ class PochetteList(ListCreateAPIView):
                 Pochette.objects.create(
                     title=v_data['title'],
                     image=v_data['image'],
+                    image_for_detail_page=data['image'],
                     author=self.request.user,
                     is_public=v_data['is_public'],
                 )
