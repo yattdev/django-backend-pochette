@@ -18,6 +18,7 @@ class PochetteSerializer(serializers.ModelSerializer):
             'title',
             'author_id',
             'image',
+            'image_for_detail_page',
             'is_public',
             'slug',
         )
