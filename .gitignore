@@ -1,5 +1,5 @@
-!.gitignore
 */__pycache__/
+*migrations/
 .coverage
 db.sqlite3
 media/
