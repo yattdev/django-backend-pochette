@@ -17,12 +17,13 @@ class Pochette(Model):
                              blank=False,
                              max_length=45)
     image = ResizedImageField(
-        size=[400, 240],
+        size=[550, 350],
         crop=['top', 'left'],
         upload_to='albums_photo/'
     )
     image_for_detail_page = ResizedImageField(
-        size=[550, 350],
+        size=[400, 240],
+        crop=['top', 'left'],
         editable=False,
         upload_to='albums_photo_details/',
         blank=True,
