@@ -252,6 +252,8 @@ DJOSER = {
 CORS_ALLOWED_ORIGINS = [
     "http://www.album-pochette.herokuapp.com",
     "http://album-pochette.herokuapp.com",
+    'https://pochette.netlify.app',
+    'https://www.pochette.netlify.app',
     "http://localhost:8080",
     "http://127.0.0.1:8080",
     "http://192.168.11.106:8080",
