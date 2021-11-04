@@ -6,5 +6,5 @@ A RESTFUL API DJANGO to manage music album covers
 -----------------------------------------------------------------------------------------------------
 TOTAL                                                                         399     32    92%
 
-# LIEN VERS LA DOCUMENTATION DE L'API
+# URL TO API DOCUMENTATION
 http://album-pochette.herokuapp.com/api/v1/docs
