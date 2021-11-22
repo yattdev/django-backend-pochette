@@ -251,7 +251,7 @@ DJOSER = {
 # CORS HEADERS Configuration
 CORS_ALLOWED_ORIGINS = [
     "http://www.album-pochette.herokuapp.com",
-    "https://pochette.yatt.tech/"
+    "https://pochette.yatt.tech"
     "http://album-pochette.herokuapp.com",
     'https://pochette.netlify.app',
     'https://www.pochette.netlify.app',
