@@ -251,6 +251,7 @@ DJOSER = {
 # CORS HEADERS Configuration
 CORS_ALLOWED_ORIGINS = [
     "http://www.album-pochette.herokuapp.com",
+    "https://pochette.yatt.tech/"
     "http://album-pochette.herokuapp.com",
     'https://pochette.netlify.app',
     'https://www.pochette.netlify.app',
@@ -258,6 +259,9 @@ CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8080",
     "http://192.168.11.106:8080",
 ]
+
+if os.environ.get('ENV') != 'PRODUCTION':
+    CORS_ALLOWED_ORIGINS.append("http://localhost:3000")
 
 # allows http verbs
 from corsheaders.defaults import default_methods
